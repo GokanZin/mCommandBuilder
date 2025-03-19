@@ -1,8 +1,12 @@
-# 🌟 mCommandBuilder - Construa Comandos de Forma Simples e Rápida!
+# 🌟 mCommandBuilder | Crie Comandos de Forma Simples e Rápida!
 
 MCommandBuilder é uma API simples e flexível para criar comandos no Bukkit/Spigot com execução personalizável, verificação de permissão e auto-completar!
+
 Funcionando atualmente para versões 1.5.2 até 1.21
+
 ---
+
+
 
 ## 📌 Como Usar
 
@@ -12,9 +16,9 @@ Funcionando atualmente para versões 1.5.2 até 1.21
 new CommandBuilder("meucomando")
     .setAliases("mc", "cmd")
     .setPermission("meucomando.use")
-    .setMessagePermission("\u00a7cVocê não tem permissão para executar esse comando!")
+    .setMessagePermission("§cVocê não tem permissão para executar esse comando!")
     .executor((sender, args) -> {
-        sender.sendMessage("\u00a7aComando executado com sucesso!");
+        sender.sendMessage("§aComando executado com sucesso!");
     })
     .setTabCompleter((sender, args) -> Arrays.asList("opcao1", "opcao2"))
     .registerCommand(plugin);
@@ -35,30 +39,30 @@ public class CommandGamemode {
         new CommandBuilder("gm")
                 .setAliases("gamemode", "gms", "gamemodes") // Adiciona aliases para o comando
                 .setPermission("gamemode.use")
-                .setMessagePermission("\u00a7cVocê não tem permissão para executar esse comando!")
+                .setMessagePermission("§cVocê não tem permissão para executar esse comando!")
                 .executor((sender, args) -> { // Executa o comando
                     if (!(sender instanceof Player)) {
-                        sender.sendMessage("\u00a7cVocê precisa ser um jogador para executar esse comando!");
+                        sender.sendMessage("§cVocê precisa ser um jogador para executar esse comando!");
                         return;
                     }
 
                     Player player = (Player) sender;
                     if (args.length == 0) {
-                        sender.sendMessage("\u00a7cUso: /gm <gamemode>");
+                        sender.sendMessage("§cUso: /gm <gamemode>");
                         return;
                     }
                     String mode = args[0];
                     switch (mode) {
                         case "0":
                             player.setGameMode(org.bukkit.GameMode.SURVIVAL);
-                            sender.sendMessage("\u00a7aModo de jogo alterado para Survival!");
+                            sender.sendMessage("§aModo de jogo alterado para Survival!");
                             break;
                         case "1":
                             player.setGameMode(org.bukkit.GameMode.CREATIVE);
-                            sender.sendMessage("\u00a7aModo de jogo alterado para Criativo!");
+                            sender.sendMessage("§aModo de jogo alterado para Criativo!");
                             break;
                         default:
-                            sender.sendMessage("\u00a7cModo de jogo inválido! Use /gm 0 ou /gm 1.");
+                            sender.sendMessage("§cModo de jogo inválido! Use /gm 0 ou /gm 1.");
                             break;
                     }
                 })
@@ -87,11 +91,100 @@ public class Main extends JavaPlugin {
 
 ---
 
-## 🚀 Benefícios do MCommandBuilder
-✅ **Criação de comandos facilitada**
-✅ **Execução e permissão personalizáveis**
-✅ **Auto-completar eficiente**
-✅ **Código mais organizado**
+# MCommandBuilder
 
-📌 **Use MCommandBuilder e otimize sua criação de comandos!** 🚀
+O **MCommandBuilder** é uma biblioteca que facilita a criação e gerenciamento de comandos em projetos Java, especialmente para plugins em ambientes como Spigot/Bukkit. Com ele, você pode construir comandos de forma mais organizada e eficiente.
 
+## 📦 Instalação
+
+### 🔹 Usando JitPack
+
+Para usar o **MCommandBuilder** em seu projeto, você pode instalá-lo facilmente através do JitPack. Siga os passos abaixo:
+
+#### Para Gradle
+
+1. Adicione o plugin Shadow ao seu arquivo `build.gradle`:
+
+    ```groovy
+    plugins {
+        id 'com.github.johnrengelman.shadow' version '8.3.0'
+    }
+    ```
+
+2. Adicione o repositório JitPack ao seu arquivo `build.gradle`:
+
+    ```groovy
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+    ```
+
+3. Adicione a dependência do **MCommandBuilder**:
+
+    ```groovy
+    dependencies {
+        implementation 'com.github.GokanZin:mCommandBuilder:1.0'
+    }
+    ```
+
+4. Configure o `shadowJar` para relocar pacotes (se necessário):
+
+    ```groovy
+    shadowJar {
+        // Substitua 'com.yourpackage' pelo pacote do seu plugin 
+        relocate 'br.com.gokan.mcommandbuilder', 'com.yourpackage.mcommandbuilder'
+    }
+    ```
+
+#### Para Maven
+
+1. Adicione o repositório JitPack ao seu arquivo `pom.xml`:
+
+    ```xml
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+    ```
+
+2. Adicione a dependência do **MCommandBuilder**:
+
+    ```xml
+    <dependency>
+        <groupId>com.github.GokanZin</groupId>
+        <artifactId>mCommandBuilder</artifactId>
+        <version>1.0</version>
+    </dependency>
+    ```
+
+#### 🔹 Exemplo Completo do `pom.xml`
+
+Aqui está um exemplo completo de como seu arquivo `pom.xml` pode ficar:
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.seu.pacote</groupId>
+    <artifactId>seu-plugin</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.GokanZin</groupId>
+            <artifactId>mCommandBuilder</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+</project>
