@@ -123,7 +123,7 @@ Para usar o **MCommandBuilder** em seu projeto, você pode instalá-lo facilment
 
     ```groovy
     dependencies {
-        implementation 'com.github.GokanZin:mCommandBuilder:1.0'
+        implementation 'com.github.GokanZin:mCommandBuilder:1.1'
     }
     ```
 
@@ -155,7 +155,7 @@ Para usar o **MCommandBuilder** em seu projeto, você pode instalá-lo facilment
     <dependency>
         <groupId>com.github.GokanZin</groupId>
         <artifactId>mCommandBuilder</artifactId>
-        <version>1.0</version>
+        <version>1.1</version>
     </dependency>
     ```
 
@@ -184,7 +184,7 @@ Aqui está um exemplo completo de como seu arquivo `pom.xml` pode ficar:
         <dependency>
             <groupId>com.github.GokanZin</groupId>
             <artifactId>mCommandBuilder</artifactId>
-            <version>1.0</version>
+            <version>1.1</version>
         </dependency>
     </dependencies>
 </project>
