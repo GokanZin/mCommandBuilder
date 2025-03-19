@@ -18,7 +18,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly fileTree(dir: "libs", include: '*.jar')
+    implementation group: 'com.github.azbh111', name: 'craftbukkit-1.7.10', version: 'R'
+
 }
 
 def namePlugin = 'mCommandBuilder'
