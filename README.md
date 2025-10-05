@@ -132,7 +132,7 @@ Para usar o **MCommandBuilder** em seu projeto, você pode instalá-lo facilment
     ```groovy
     shadowJar {
         // Substitua 'com.yourpackage' pelo pacote do seu plugin 
-        relocate 'br.com.gokan.mcommandbuilder', 'com.yourpackage.mcommandbuilder'
+        relocate 'br.com.gokan.mcommandbuilderv2', 'com.yourpackage.mcommandbuilder'
     }
     ```
 
